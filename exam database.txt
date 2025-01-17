@@ -382,10 +382,6 @@ mysql> select *from employees where last_name='austin';
 +-------------+------------+-----------+---------------------+--------------+---------------+--------+--------+----------------+------------+---------------+
 3 rows in set (0.00 sec)
 
-mysql> select *from employees where department='60','70','80';
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ','70','80'' at line 1
-mysql> select *from employees where department_id='60','70','80';
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ','70','80'' at line 1
 mysql> select *from employees where department_id='60';
 +-------------+------------+-----------+---------------------+--------------+---------------+--------+--------+----------------+------------+---------------+
 | EMPLOYEE_ID | first_name | last_name | email               | phone_number | hire_date     | job_id | salary | commission_pct | manager_id | department_id |
@@ -465,11 +461,6 @@ mysql> select AVG(salesamount) as AVERAGE_amount from sales;
 |          42000 |
 +----------------+
 1 row in set (0.00 sec)
-
-mysql> SELECT *FRM SALES WHERE DOB='14_dec_09' and BOB='14_DEC_08';
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FRM SALES WHERE DOB='14_dec_09' and BOB='14_DEC_08'' at line 1
-mysql> SELECT *FROM SALES WHERE DOB='14_dec_09' and DOB='14_DEC_08';
-Empty set (0.00 sec)
 
 mysql> SELECT *FROM SALES WHERE DOB='14_dec_09';
 +---------+-----------+---------+-------------+-----------+
