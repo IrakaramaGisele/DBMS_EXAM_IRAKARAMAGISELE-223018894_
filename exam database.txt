@@ -1,5 +1,6 @@
 
 1.
+
 mysql> create database BIT;
 Query OK, 1 row affected (0.02 sec)
 
@@ -85,6 +86,8 @@ mysql> SELECT *FROM CLIENT12;
 +----------+----------+----------+-------------+----------+---------+
 5 rows in set (0.01 sec)
 ``
+6.
+
 mysql> create table employees(employee_id int primary key auto_increment,employee_names char(30),location char(30),tel int(20),salary varchar(30));
 Query OK, 0 rows affected, 1 warning (0.03 sec)
 
@@ -112,15 +115,6 @@ mysql> select *from employees;
 |           4 | Kethia         | ruhango  |  78850047 | 45000 frw |
 +-------------+----------------+----------+-----------+-----------+
 4 rows in set (0.00 sec)
-
-6.
-
-mysql> CREATE TABLE DEPARTMENTS(department_id int primary key auto_increment,department_name char(30),manager_name char(30),departmant_supervisor char(30),employee_id int,foreign key(employee-id) references employees(employee_id)),
-    -> ;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-id) references employees(employee_id)),' at line 1
-mysql> CREATE TABLE DEPARTMENTS(department_id int primary key auto_increment,department_name char(30),manager_name char(30),departmant_supervisor char(30),employee_id int,foreign key(employee_id) references employees(employee_id)),
-    -> ;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',' at line 1
 mysql> CREATE TABLE DEPARTMENTS(department_id int primary key auto_increment,department_name char(30),manager_name char(30),departmant_supervisor char(30),employee_id int,foreign key(employee_id) references employees(employee_id));
 Query OK, 0 rows affected (0.01 sec)
 
@@ -205,6 +199,7 @@ mysql> select *from departments left outer join employees on departments.employe
 mysql>
 
 7.
+
 mysql> create table STUDENT(studentid varchar(5),fullnames varchar(25),gender varchar(6),age int(2),department varchar(30));
 Query OK, 0 rows affected, 1 warning (0.02 sec)
 
@@ -427,7 +422,9 @@ mysql> select *from employees where department_id='80';
 2 rows in set (0.00 sec)
 
 mysql>
+
 10.
+
 
 mysql> create table sales(salesNO int(20),salesname char(30),branch char(30),salesamount varchar(30),DOB varchar(20));
 Query OK, 0 rows affected, 1 warning (0.02 sec)
