@@ -1,16 +1,6 @@
 
 1.
 
-mysql> create database BIT;
-Query OK, 1 row affected (0.02 sec)
-
-mysql> USE BIT;
-Database changed
-mysql> create table client_master(clientNO INT(30),Name char(30),address char(30),city char(30),state char(30),bal_due decimal(30));
-Query OK, 0 rows affected, 1 warning (0.02 sec)
-
-mysql> DELETE TABLE CLIENT_MASTER;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'TABLE CLIENT_MASTER' at line 1
 mysql> create database BIT2;
 Query OK, 1 row affected (0.02 sec)
 
@@ -46,14 +36,20 @@ mysql> select *from client_master;
 +----------+----------+----------+-------------+----------+---------+
 5 rows in set (0.00 sec)
 
-mysql> select *from client_master where bal_due='5000';
-+----------+---------+---------+----------+---------+---------+
-| clientNO | Name    | address | city     | state   | bal_due |
-+----------+---------+---------+----------+---------+---------+
-| C123     | Patrick | Ash_Ct  | Columbus | Ohio    |    5000 |
-| C124     | Gisele  | USA     | Calfonia | America |    5000 |
-+----------+---------+---------+----------+---------+---------+
-2 rows in set (0.00 sec)
+2.
+
+mysql> select *from client_master where bal_due>5000;
++----------+----------+----------+-------------+----------+---------+
+| clientNO | Name     | address  | city        | state    | bal_due |
++----------+----------+----------+-------------+----------+---------+
+| C123     | Patrick  | Ash_Ct   | Columbus    | Ohio     |    5100 |
+| C125     | Designer | Rwanda   | Kigali      | Africa   |    5200 |
+| C126     | JOHN     | Maple_St | springfield | Illinois |    5300 |
+| C127     | Ishal    | Maple_St | springfield | Illinois |    5400 |
++----------+----------+----------+-------------+----------+---------+
+4 rows in set (0.00 sec)
+
+3.
 
 mysql> update client_master set bal_due='5100' where clientno='c123';
 Query OK, 1 row affected (0.00 sec)
@@ -71,6 +67,8 @@ mysql> select *from client_master;
 +----------+----------+----------+-------------+----------+---------+
 5 rows in set (0.00 sec)
 
+4.
+
 mysql> alter table client_master rename to Client12;
 Query OK, 0 rows affected (0.02 sec)
 
@@ -87,7 +85,6 @@ mysql> SELECT *FROM CLIENT12;
 5 rows in set (0.01 sec)
 ``
 6.
-
 mysql> create table employees(employee_id int primary key auto_increment,employee_names char(30),location char(30),tel int(20),salary varchar(30));
 Query OK, 0 rows affected, 1 warning (0.03 sec)
 
@@ -144,7 +141,6 @@ mysql> select *from departments;
 |            14 | finance         | gisele       | patrick               |           5 |
 +---------------+-----------------+--------------+-----------------------+-------------+
 5 rows in set (0.00 sec)
-
 mysql> describe employees;
 +----------------+-------------+------+-----+---------+----------------+
 | Field          | Type        | Null | Key | Default | Extra          |
@@ -156,11 +152,6 @@ mysql> describe employees;
 | salary         | varchar(30) | YES  |     | NULL    |                |
 +----------------+-------------+------+-----+---------+----------------+
 5 rows in set (0.01 sec)
-
-mysql> select *from departments left join employees department.employee_id=employees.employee_id;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.employee_id=employees.employee_id' at line 1
-mysql> select *from departments left join employees departments.employee_id=employees.employee_id;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.employee_id=employees.employee_id' at line 1
 mysql> select *from departments left join employees on departments.employee_id=employees.employee_id;
 +---------------+-----------------+--------------+-----------------------+-------------+-------------+----------------+----------+-----------+-----------+
 | department_id | department_name | manager_name | departmant_supervisor | employee_id | employee_id | employee_names | location | tel       | salary    |
@@ -172,7 +163,6 @@ mysql> select *from departments left join employees on departments.employee_id=e
 |            14 | finance         | gisele       | patrick               |           5 |        NULL | NULL           | NULL     |      NULL | NULL      |
 +---------------+-----------------+--------------+-----------------------+-------------+-------------+----------------+----------+-----------+-----------+
 5 rows in set (0.00 sec)
-
 mysql> select *from departments right outer join employees on departments.employee_id=employees.employee_id;
 +---------------+-----------------+--------------+-----------------------+-------------+-------------+----------------+----------+-----------+-----------+
 | department_id | department_name | manager_name | departmant_supervisor | employee_id | employee_id | employee_names | location | tel       | salary    |
